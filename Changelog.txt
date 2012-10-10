@@ -1,0 +1,61 @@
+24.1.
+- swapped nframes and rframes in force vector generation => relax time now independent of creep/ramp order
+- default BA parameters (Win/Dist -> 40/40) for Tweezers (40x) => bead detection in subframe now more reliable
+
+25.1.
+- introduced criterion max(f1,f2)>2.0 to move needle from the beginning
+- late writes are now (partially) compensated by shift +1 in force vector
+
+30.1.
+- added total_mass < 30 as criterion to stop measurement (SaveThread.cpp)
+- fixed bug in calculation of first tinfo->dist value (SaveThread.cpp)
+- catch infinite current values (tweezers.cpp)
+- changed initial value of residual to that of ANTI_VOLTAGE (tweezers.cpp)
+- only closest bead written to eval.txt (SaveThread.cpp)
+
+3.2.
+- additional offset to current due to hysteresis (tweezers.cpp)
+
+8.2.
+- added SaveToDiskThread - removed again...
+- added wait Samples (TriggerThread.cpp)
+
+9.2.
+- changed wait Samples to Tweezers.cpp (was wrong)
+- changed residual current calib + method
+
+15.3.
+- changed calibration to offset(AV)-relative coefficients
+- changed remanence to offset(AV)-relative values
+- fixed bug in needle-distance update if needle is moved
+- fixed bug in tweezers object reinitialization (-0.09 => AV)
+
+18.5.
+- changed needle movement, now moving whenever tinfo.dist is < 20 µm
+- removed some bugs in force calculation, should finally work now
+- needleframe deleted in CycleThread
+- bc deleted after SaveThread
+- removed some compiler warnings
+
+7.6.
+- changed bc and needleframe changes back from last version
+
+20.6.
+- changed cam handling, now only inited once
+
+22.6.
+- added array_size and anti_voltage to tinfo/config file
+- activated optimizations
+- removed bc init bug
+
+27.6.
+- removed typecast bug in needle movement
+
+29.6.
+- changed buffer flush in mikroepp.h, reducing hangs
+- removed some debug messages
+- changed compiler flags (optimization)
+
+3.7.
+- added calib-rem protocol
+- cleaned up thread structure
