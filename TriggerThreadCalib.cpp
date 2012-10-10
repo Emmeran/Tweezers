@@ -58,6 +58,7 @@ void TriggerThreadCalib(void* lpParam)
 
 		if(t->mt->CurrentRun(curr,indata,t))
 		{
+			cerr << "DAQ Error:\n";
 			DAQmxGetExtendedErrorInfo(errBuff,2048);
 			cerr<<errBuff;
 			t->mt->RecoverFromError();
