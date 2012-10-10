@@ -254,9 +254,10 @@ int32 Tweezers::CurrentRun(float64* curr, float64* indata, void* lpParam)
 	DAQmxErrRtn(DAQmxWriteAnalogF64(AOtaskHandle,t->nofFrames*10,0,10.0,DAQmx_Val_GroupByChannel,curr,&written,NULL));
 	DAQmxErrRtn(DAQmxStartTask(AOtaskHandle));
 
+	cerr << "\nTrying to allocate buffer for " << (*t->cycles * t->nofFrames) << " frames\n";
 	// config and start pulse channel with parameters set by user
-	DAQmxErrRtn(DAQmxCfgImplicitTiming(DOtaskHandle, DAQmx_Val_FiniteSamps,*t->cycles * t->nofFrames));
-//	DAQmxErrRtn(DAQmxCfgImplicitTiming(DOtaskHandle, DAQmx_Val_ContSamps,1));
+	//DAQmxErrRtn(DAQmxCfgImplicitTiming(DOtaskHandle, DAQmx_Val_FiniteSamps,*t->cycles * t->nofFrames));
+	DAQmxErrRtn(DAQmxCfgImplicitTiming(DOtaskHandle, DAQmx_Val_ContSamps,1));
 	DAQmxErrRtn(DAQmxCfgDigEdgeStartTrig(DOtaskHandle, "PFI0", DAQmx_Val_Rising));
 	DAQmxErrRtn(DAQmxStartTask(DOtaskHandle));
 
