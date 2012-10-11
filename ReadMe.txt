@@ -1,10 +1,8 @@
 ========================================================================
-    CONSOLE APPLICATION : Creep F9 Project Overview
+    Tweezer Program
 ========================================================================
 
-AppWizard has created this Creep F9 application for you.  
-This file contains a summary of what you will find in each of the files that
-make up your Creep F9 application.
+This program controls the magnetic tweezer via a National Insturments ADDA card
 
 
 Creep F9.vcproj
